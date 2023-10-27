@@ -13,10 +13,27 @@ public:
 				 int up):
 		_tft(Adafruit_ILI9341(tft_cs, tft_dc)),
 		_target_temp(current_temp),
-		_tela(0),
+		_tela(1),
 		_select(select),
 		_down(down),
 		_up(up){}
+
+	/**
+	* \brief Tela principal
+	* Mostra a temperatura atual e a alvo, o cursor fica fixo na opção
+	* de ir para a tela de seleção
+	*/
+	void main_screen();
+
+	/**
+	* \brief Tela de seleção da temperatura alvo
+	*/
+	void select_screen();	
+
+	/**
+	* \brief Define a tela a ser mostrada baseado na variavel tela
+	*/
+	void update();
 
 private:
 	Adafruit_ILI9341 _tft; /// controlador do display

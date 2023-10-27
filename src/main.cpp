@@ -1,6 +1,8 @@
 #include "Arduino.h"
 
-#include "DHT.h" // Biblioteca do sensor
+#include "Classes/Motor.hpp"
+#include "Classes/Sensor.hpp"
+#include "Classes/Display.hpp"
 
 //Definição das portas do motor e do LED
 #define MOTOR_STEP 26
@@ -15,25 +17,8 @@
 #define leftButton 15
 #define rightButton 4
 
-//Definição do sensor
-DHT sensor(18, DHT22);
-
-//Definição das classes
-class Motor{
-	
-};
-
-class Display{
-	
-};
-
-class Sensor{
-
-};
-
 void setup(){
 	Serial.begin(115200);
-
 }
 
 void loop(){

@@ -23,7 +23,7 @@ public:
 	* \param current_temp Temperatura atual
 	* \param target_temp Temperatura alvo
 	*/
-	void update_delay();
+	void update_delay(int current_temp, int target_temp);
 
 private:
 	int _step;
