@@ -6,14 +6,7 @@ public:
 	/**
 	* \brief Construtor do motor
 	*/
-	Motor(int step,
-			 int dir,
-			 int led):
-		_step(step),
-		_dir(dir),
-		_led(led),
-		_delay(-1){}
-
+	Motor(int step, int dir, int led);
 	/**
 	* \brief Gira o motor de acordo com o delay
 	* Caso o delay seja negativo, deixa o motor parado

@@ -6,25 +6,25 @@
 class Display{
 public:
 	/**
-	* \brief Construtor do display
+	* @brief Construtor do display
 	*/
 	Display(int tft_cs, int tft_dc, int current_temp,
-				int select, int down, int up): 
+				int select, int down, int up);
 
 	/**
-	* \brief Tela principal
+	* @brief Tela principal
 	* Mostra a temperatura atual e a alvo, o cursor fica fixo na opção
 	* de ir para a tela de seleção
 	*/
 	void main_screen();
 
 	/**
-	* \brief Tela de seleção da temperatura alvo
+	* @brief Tela de seleção da temperatura alvo
 	*/
 	void select_screen();	
 
 	/**
-	* \brief Define a tela a ser mostrada baseado na variavel tela
+	* @brief Define a tela a ser mostrada baseado na variavel tela
 	*/
 	void update();
 
