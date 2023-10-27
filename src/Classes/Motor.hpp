@@ -1,3 +1,6 @@
+#ifndef MOTOR_HPP
+#define MOTOR_HPP
+
 class Motor{
 public:
 	/**
@@ -31,3 +34,5 @@ private:
 	int _led;
 	int _delay;
 };
+
+#endif //MOTOR_HPP

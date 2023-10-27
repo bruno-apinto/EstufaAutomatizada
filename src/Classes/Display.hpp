@@ -1,3 +1,6 @@
+#ifndef DISPLAY_HPP
+#define DISPLAY_HPP
+
 #include "Adafruit_ILI9341.h"
 
 class Display{
@@ -5,18 +8,11 @@ public:
 	/**
 	* \brief Construtor do display
 	*/
-	Display(int tft_cs,
-				 int tft_dc,
-				 int current_temp,
-				 int select,
-				 int down,
-				 int up):
-		_tft(Adafruit_ILI9341(tft_cs, tft_dc)),
-		_target_temp(current_temp),
-		_tela(1),
-		_select(select),
-		_down(down),
-		_up(up){}
+	Display(int tft_cs, int tft_dc, int current_temp,
+				int select, int down, int up): 
+
+		_tft(Adafruit_ILI9341(tft_cs, tft_dc)), _target_temp(current_temp), _tela(1),
+		_select(select), _down(down), _up(up) { }
 
 	/**
 	* \brief Tela principal
@@ -44,3 +40,5 @@ private:
 	int _down; /// botao de ir para baixo
 	int _up; /// botao de ir para cima
 };
+
+#endif //DISPLAY_HPP
