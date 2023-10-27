@@ -1,6 +1,5 @@
 #include "Arduino.h"
 
-#include "Adafruit_ILI9341.h" //Biblioteca do display
 #include "DHT.h" // Biblioteca do sensor
 
 //Definição das portas do motor e do LED
@@ -11,8 +10,6 @@
 //Definição das portas do display e dos botões
 #define TFT_DC 32
 #define TFT_CS 5
-
-Adafruit_ILI9341 tft(TFT_CS, TFT_DC);
 
 #define selectButton 2
 #define leftButton 15

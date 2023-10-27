@@ -1,0 +1,33 @@
+class Motor{
+public:
+	/**
+	* \brief Construtor do motor
+	*/
+	Motor(int step,
+			 int dir,
+			 int led):
+		_step(step),
+		_dir(dir),
+		_led(led),
+		_delay(-1){}
+
+	/**
+	* \brief Gira o motor de acordo com o delay
+	* Caso o delay seja negativo, deixa o motor parado
+	*/
+	void spin();
+
+	/**
+	* \brief Atualiza o delay de acordo com as temperaturas atual e alvo
+	*
+	* \param current_temp Temperatura atual
+	* \param target_temp Temperatura alvo
+	*/
+	void update_delay();
+
+private:
+	int _step;
+	int _dir;
+	int _led;
+	int _delay;
+};
