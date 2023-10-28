@@ -14,19 +14,24 @@ Motor::Motor(int step, int dir, int led, int delay):
 
 void Motor::spin(int& MOTOR_DIR, int& MOTOR_STEP) {
 	
-	if (_delay < 0) {
-		_step = 0;
-  	}
-	else {
-		_step = _delay*1.0; //fator de multiplicação a definir
+	//Se o delay for maior que o mínimo (2000), o motor acionará
+	if(_delay > 2000){
+		digitalWrite (MOTOR_DIR, HIGH);
+		digitalWrtite(MOTOR_STEP, LOW);
+		digitalWrite(MOTOR_STEP, HIGH);
+		delay(_delay);
 	}
-
+	
 }
 
 void Motor::led (int LED, int& _step){
 
-	if (_step =)
-	digitalWrite(LED, HIGH);
+	if (_step == 0){
+		digitalWrite(LED, LOW);
+	}
+	else {
+		digitalWrite(LED, HIGH);
+	}
 
 }
 

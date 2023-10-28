@@ -33,8 +33,8 @@ public:
 	void led (int& MOTOR_LED){}
 
 private:
-	float _step; //quantidade de passos
-	int _dir; //sentido de giro
+	int _step; //quantidade de passos
+	int _dir; //sentido de giro 0 = AH, 1 = H
 	int _led; 
 	float _delay; //delay entre os passos
 };
