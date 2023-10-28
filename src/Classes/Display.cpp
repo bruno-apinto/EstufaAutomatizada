@@ -21,3 +21,7 @@ void Display::select_screen() {
 void Display::update() {
   
 }
+
+int Display::getTarget(){
+    return _target_temp;
+}

@@ -28,6 +28,13 @@ public:
 	*/
 	void update();
 
+	/**
+	 * @brief Retorna o valor da temperatura alvo
+	 * 
+	 * @return _target_temp 
+	 */
+	int getTarget();
+
 private:
 	Adafruit_ILI9341 _tft; /// controlador do display
 	int _target_temp; /// temperatura alvo
