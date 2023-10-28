@@ -1,28 +1,38 @@
 #include "Motor.hpp"
-#include <ESP32>
 #include "Display.hpp"
 #include "Sensor.hpp"
 
 #define DELAY_US 2000 //delay para o motor captar a borda de subida
 
-int modulo (int x) {
-	if (x<0) return (-1)*x;
-	else return x;
-}
-
 Motor::Motor(int step, int dir, int led, int delay):
 		_step(step), _dir(dir), _led(led), _delay(delay) {
-			
+
+			pinMode(Motor, OUTPUT);
+			delay(1000);
+
 		}
 
-void Motor::spin() {
-  
+void Motor::spin(int& MOTOR_DIR, int& MOTOR_STEP) {
+	
+	if (_delay < 0) {
+		_step = 0;
+  	}
+	else {
+		_step = _delay*1.0; //fator de multiplicação a definir
+	}
+
 }
 
-void Motor::update_delay(int current_temp, int target_temp) {
+void Motor::led (int LED, int& _step){
 
-	float target = Display::getTarget();
-	float diff = modulo(target - Sensor::setTemperature());
+	if (_step =)
+	digitalWrite(LED, HIGH);
 
+}
+
+
+void Motor::update_delay(float current_temp, float target_temp) {
+	
+	float diff = current_temp - target_temp;
 	_delay = DELAY_US + diff*1000;
 }

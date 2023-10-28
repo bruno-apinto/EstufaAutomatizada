@@ -19,7 +19,7 @@ public:
 
 private:
 	DHT _sensor;
-	float _temperatura;
+	float current_temp;
 };
 
 
