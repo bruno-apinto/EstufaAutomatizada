@@ -18,7 +18,7 @@ public:
 
 	/**
 	* @brief Atualiza o delay de acordo com as temperaturas atual e alvo,
-  * sendo delay sempre maior que 2ms //THEO: Acredito que 2ms não seja o minimo, podemos testar
+  * sendo delay sempre maior que 2ms
 	*
 	* @param current_temp Temperatura atual
 	* @param target_temp Temperatura alvo

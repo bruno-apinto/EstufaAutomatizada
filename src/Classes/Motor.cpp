@@ -2,22 +2,34 @@
 
 #include "Motor.hpp"
 
-#define DELAY_US 2000 //delay para o motor captar a borda de subida
+#define MIN_DELAY 2000 // Delay minimo
+#define MAX_DELAY 10000 // Delay maximo
 
-Motor::Motor(int step, int dir, int led, int delay):
-		_step(step), _dir(dir), _led(led), _delay(delay) {
+// Diferença de temperatura relativa ao delay maximo (para a regressão linear)
+#define MAX_TEMP_DIFF 20.0
 
-		// pinMode(Motor, OUTPUT); // THEO: Essa linha tem um erro, o que é esse Motor?
-}
+Motor::Motor(int step,
+						 int dir,
+						 int led,
+						 int delay):
+	_step(step),
+	_dir(dir), 
+	_led(led), 
+	_delay(delay) {}
 
 void Motor::spin(int& motor_dir, int& motor_step) {
-	
-	//Se o delay for maior que o mínimo (2000), o motor acionará
-	if(_delay > 2000){ 
+	//Se o delay for maior que o mínimo, o motor acionará
+	if (_delay > 2000) { 
+		digitalWrite(_led, HIGH);
+
 		digitalWrite (motor_dir, HIGH);
 		digitalWrite(motor_step, LOW);
 		digitalWrite(motor_step, HIGH);
-		delayMicroseconds(_delay); //THEO: Mudei para delayMicroseconds, é o usado no video
+
+		delayMicroseconds(_delay);
+	}
+	else {
+		digitalWrite(_led, LOW);
 	}
 	
 }
@@ -36,6 +48,6 @@ void Motor::spin(int& motor_dir, int& motor_step) {
 
 
 void Motor::update_delay(float current_temp, float target_temp) {
-	float diff = current_temp - target_temp;
-	_delay = DELAY_US + diff*1000; // THEO: Quanto maior a diferença de temperatura maior o delay e menor a velocidade??
+	float m = (MAX_DELAY - MIN_DELAY)/MAX_TEMP_DIFF; // m = (y1 - y0)/(x1 - x0)
+	_delay = MIN_DELAY + m*(current_temp - target_temp) ; // y = y0 + m(x - x0)
 }
