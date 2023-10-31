@@ -3,19 +3,20 @@
 
 #include "DHT.h"
 
+//THEO: Essa classe é desnecessária, podemos retirá-la
 class Sensor{
 public:
 	/**
 	* \brief Construtor do sensor
 	*/
-	Sensor (int sensor) {}
+	Sensor(int sensor);
 
 	/**
 	 * @brief lê a temperatura atual
 	 * 
 	 * @return temperatura atual 
 	 */
-	float setTemperature() {}
+	float get_temperature();
 
 private:
 	DHT _sensor;
@@ -23,4 +24,4 @@ private:
 };
 
 
-#endif
+#endif //SENSOR_HPP

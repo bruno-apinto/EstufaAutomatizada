@@ -9,7 +9,7 @@ public:
 	* @brief Construtor do display
 	*/
 	Display(int tft_cs, int tft_dc, int current_temp,
-				int select, int down, int up);
+				 int select, int down, int up);
 
 	/**
 	* @brief Tela principal
@@ -33,13 +33,13 @@ public:
 	 * 
 	 * @return _target_temp 
 	 */
-	int getTarget();
+	int get_target();
 
 private:
 	Adafruit_ILI9341 _tft; /// controlador do display
 	int _target_temp; /// temperatura alvo
 	int _tela; /// tela atual
-	
+
 	int _select; /// botao de seleção
 	int _down; /// botao de ir para baixo
 	int _up; /// botao de ir para cima

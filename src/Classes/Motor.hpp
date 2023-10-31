@@ -14,23 +14,23 @@ public:
 	 * @param MOTOR_DIR 
 	 * @param MOTOR_STEP 
 	 */
-	void spin(int& MOTOR_DIR, int& MOTOR_STEP);
+	void spin(int& motor_dir, int& motor_step);
 
 	/**
-	* \brief Atualiza o delay de acordo com as temperaturas atual e alvo,
-    * sendo delay sempre maior que 2000ms (2.0s)
+	* @brief Atualiza o delay de acordo com as temperaturas atual e alvo,
+  * sendo delay sempre maior que 2ms //THEO: Acredito que 2ms não seja o minimo, podemos testar
 	*
-	* \param current_temp Temperatura atual
-	* \param target_temp Temperatura alvo
+	* @param current_temp Temperatura atual
+	* @param target_temp Temperatura alvo
 	*/
 	void update_delay(float current_temp, float target_temp);
 
 	/**
 	 * @brief acende e apaga o led
 	 * 
-	 * @param MOTOR_LED 
+	 * @param led_motor 
 	 */
-	void led (int& MOTOR_LED){}
+	// void led (int& led_motor);
 
 private:
 	int _step; //quantidade de passos
