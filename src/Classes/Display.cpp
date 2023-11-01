@@ -84,6 +84,10 @@ void Display::main_screen() {
 	}
 }
 
+void Display::real_time_temp() {
+	
+}
+
 void Display::select_screen() {
 	int retorno = 1;
 	
