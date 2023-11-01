@@ -85,7 +85,39 @@ void Display::main_screen() {
 }
 
 void Display::real_time_temp() {
-	
+	int retorno = 1;
+
+  	while (retorno) {
+    		_tft.setCursor(0,0);
+    		_tft.setTextSize(3);
+    		_tft.println("");
+    		_tft.print("  Temperatura");
+    		_tft.setTextSize(4);
+    		_tft.println(": ");
+    		_tft.println("");
+
+    		_tft.setTextSize(5);
+    		_tft.print("  " + String(temperatura_atual));
+    		_tft.setTextSize(2);
+    		_tft.print("o");
+    		_tft.setTextSize(5);
+    		_tft.println("C");
+    		_tft.println("");
+    		_tft.setTextSize(2);
+    		_tft.write(16);
+    		_tft.println(" Voltar");
+
+		if (!digitalRead(_select)) {
+      			retorno = 0;
+      			_tela = 1;
+      			_tft.fillScreen(ILI9341_BLACK);
+   		}
+
+		if (!digitalRead(_up) || !digitalRead(_down)) {
+			retorno = 0;
+			_tft.fillScreen(ILI9341_BLACK);
+		}
+  	}
 }
 
 void Display::select_screen() {
