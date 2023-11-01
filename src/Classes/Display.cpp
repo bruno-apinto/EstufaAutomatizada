@@ -118,7 +118,7 @@ void Display::real_time_temp() {
 
 		if (!digitalRead(_up) || !digitalRead(_down)) {
 			retorno = 0;
-			display.fillRect(10, 60, 300, 100, ILI9341_BLACK);
+			_tft.fillRect(10, 60, 300, 100, ILI9341_BLACK);
 		}
   	}
 }
