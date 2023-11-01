@@ -4,8 +4,10 @@
 #include <SPI.h>
 #include <Arduino.h>
 
-Display::Display(int tft_CS,int tft_DC, int current_temp, int select, int down, int up) {
+Display::Display(int tft_CS, int tft_DC, int current_temp, int select, int down, int up) {
 	// Inicializa o display com as configurações desejadas
+	_tft = Adafruit_ILI9341(tft_CS, tft_DC);
+	
 	_tft.begin();
 	_tft.setTextColor(ILI9341_WHITE);
 	_tft.setTextSize(2);
