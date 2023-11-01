@@ -6,7 +6,7 @@
 class Display{
 public:
 	/// @brief Inicializa o display
-	Display(int tft_CS, int tft_DC, int current_temp, int select, int down, int up);
+	Display(int tft_CS, int tft_DC, int current_temp, int atual_temp, int select, int down, int up);
 
 	/// @brief Estilo usado para escrever os textos no display
 	void design_display(int posicao_do_cursor, int size_titulo, char txt_1[], int size_texto, char txt_2[], char txt_3[]);
@@ -29,10 +29,14 @@ public:
 	/// @return A temperatura alvo
 	int get_target();
 
+	/// @return A temperatura atual
+	int get_atual_temp();
+
 private:
 	Adafruit_ILI9341 _tft; // controlador do display
 
 	int _target_temp; // temperatura alvo
+	int _atual_temp; // temperatura atual
 	int _tela; // tela atual
 
 	int _select; // botao de seleção
