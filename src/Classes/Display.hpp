@@ -6,7 +6,7 @@
 class Display{
 public:
 	/// @brief Inicializa o display
-	Display(int tft_CS, int tft_DC, int current_temp, int atual_temp, int select, int down, int up);
+	Display(int tft_CS, int tft_DC, int current_temp, int select, int down, int up);
 
 	/// @brief Estilo usado para escrever os textos no display
 	void design_display(int posicao_do_cursor, int size_titulo, char txt_1[], int size_texto, char txt_2[], char txt_3[]);
