@@ -8,8 +8,14 @@ public:
 	/// @brief Inicializa o display
 	Display(int tft_CS, int tft_DC, int current_temp, int select, int down, int up);
 
-	/// @brief Tela inicial, mostra a temperatura atual e a alvo
+	/// @brief Estilo usado para escrever os textos no display
+	void design_display(int posicao_do_cursor, int size_titulo, char txt_1[], int size_texto, char txt_2[], char txt_3[]);
+
+	/// @brief Tela inicial, pode acessar a tela de seleção de temp e a de temp atual
 	void main_screen();
+
+	/// @brief Mostra a temperatura atual e a alvo
+	void real_time_temp();
 
 	/// @brief Tela de seleção da temperatura alvo
 	void select_screen();
