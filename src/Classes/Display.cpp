@@ -99,7 +99,7 @@ void Display::real_time_temp() {
     		_tft.println("");
 
     		_tft.setTextSize(5);
-    		_tft.print("  " + String(temperatura_atual));
+    		_tft.print("  " + String(_atual_temp));
     		_tft.setTextSize(2);
     		_tft.print("o");
     		_tft.setTextSize(5);
@@ -178,4 +178,8 @@ int Display::get_tela() {
 
 int Display::get_target() {
     	return _target_temp;
+}
+
+int Display::get_atual_temp() {
+	return _atual_temp;
 }
