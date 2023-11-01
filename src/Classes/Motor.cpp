@@ -1,6 +1,7 @@
 #include "Arduino.h"
 
 #include "Motor.hpp"
+#include "esp32-hal-gpio.h"
 
 #define MIN_DELAY 2000 // Delay minimo
 #define MAX_DELAY 10000 // Delay maximo
@@ -10,21 +11,24 @@
 
 Motor::Motor(int step,
 						 int dir,
-						 int led,
-						 int delay):
+						 int led):
 	_step(step),
 	_dir(dir), 
-	_led(led), 
-	_delay(delay) {}
+	_led(led) {
 
-void Motor::spin(int& motor_dir, int& motor_step) {
+	pinMode(_step, OUTPUT);
+	pinMode(_dir, OUTPUT);
+	pinMode(_led, OUTPUT);
+}
+
+void Motor::spin() {
 	//Se o delay for maior que o mínimo, o motor acionará
-	if (_delay > 2000) { 
+	if (_delay > MIN_DELAY) { 
 		digitalWrite(_led, HIGH);
 
-		digitalWrite (motor_dir, HIGH);
-		digitalWrite(motor_step, LOW);
-		digitalWrite(motor_step, HIGH);
+		digitalWrite (_dir, HIGH);
+		digitalWrite(_step, LOW);
+		digitalWrite(_step, HIGH);
 
 		delayMicroseconds(_delay);
 	}
@@ -33,19 +37,6 @@ void Motor::spin(int& motor_dir, int& motor_step) {
 	}
 	
 }
-
-// THEO: Acredito que não seja necessária essa função, podemos acender o led no spin
-/* void Motor::led (int LED, int& _step){
-
-	if (_step == 0){
-		digitalWrite(LED, LOW);
-	}
-	else {
-		digitalWrite(LED, HIGH);
-	}
-
-} */
-
 
 void Motor::update_delay(float current_temp, float target_temp) {
 	float m = (MAX_DELAY - MIN_DELAY)/MAX_TEMP_DIFF; // m = (y1 - y0)/(x1 - x0)

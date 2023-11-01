@@ -6,7 +6,7 @@ public:
 	/**
 	* \brief Construtor do motor
 	*/
-	Motor(int step, int dir, int led, int delay);
+	Motor(int step, int dir, int led);
 	
 	/**
 	 * @brief Gira o motor, caso delay seja neg, o motor para
@@ -14,7 +14,7 @@ public:
 	 * @param MOTOR_DIR 
 	 * @param MOTOR_STEP 
 	 */
-	void spin(int& motor_dir, int& motor_step);
+	void spin();
 
 	/**
 	* @brief Atualiza o delay de acordo com as temperaturas atual e alvo,
@@ -24,13 +24,6 @@ public:
 	* @param target_temp Temperatura alvo
 	*/
 	void update_delay(float current_temp, float target_temp);
-
-	/**
-	 * @brief acende e apaga o led
-	 * 
-	 * @param led_motor 
-	 */
-	// void led (int& led_motor);
 
 private:
 	int _step; //quantidade de passos

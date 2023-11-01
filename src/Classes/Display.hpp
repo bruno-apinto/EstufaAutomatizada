@@ -23,20 +23,17 @@ public:
 	/// @brief Atualiza o valor da temperatura atual
 	void update();
 
-	/// @return A tela atual
-	int get_tela();
-
 	/// @return A temperatura alvo
 	int get_target();
 
-	/// @return A temperatura atual
-	int get_atual_temp();
+	/// @brief Atualiza a temperatura atual
+	void set_current_temp(int current_temp);
 
 private:
 	Adafruit_ILI9341 _tft; // controlador do display
 
 	int _target_temp; // temperatura alvo
-	int _atual_temp; // temperatura atual
+	int _current_temp; // temperatura atual
 	int _tela; // tela atual
 
 	int _select; // botao de seleção

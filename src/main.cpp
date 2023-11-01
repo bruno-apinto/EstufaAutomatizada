@@ -1,40 +1,39 @@
 #include <Arduino.h>
 
+#include "DHT.h"
+
 #include "Classes/Motor.hpp"
 #include "Classes/Sensor.hpp"
 #include "Classes/Display.hpp"
 
-//Definição das portas do motor e do LED
-#define MOTOR_STEP 26
-#define MOTOR_DIR 25
-#define MOTOR_LED 12
+//Definição da porta do sensor
+#define SENSOR 25
 
-Display *tft;
+//Definição das portas do motor e do LED
+#define MOTOR_STEP 21
+#define MOTOR_DIR 19
+#define MOTOR_LED 33
+
+//Definição das portas do display e dos botões
+#define TFT_DC 32
+#define TFT_CS 5
+
+#define SELECT_BUTTON 2
+#define UP_BUTTON 15
+#define DOWN_BUTTON 4
+
+Display display(TFT_CS, TFT_DC, 25, SELECT_BUTTON, DOWN_BUTTON, UP_BUTTON);
+Motor motor(MOTOR_STEP, MOTOR_DIR, MOTOR_LED);
+DHT sensor(25, DHT22);
 
 void setup(){
 	Serial.begin(115200);
-
-	pinMode(DIR, OUTPUT);
-  	pinMode(STEP, OUTPUT);
-	pinMode(LED, OUTPUT);
-	
-	//Construção de um instância da classe Display
-	tft = new Display(5, 32, 25, 2, 4, 15);
 }
 
 void loop(){
-	switch (tft->get_tela()) {
-    		case 1: {
-      			tft->main_screen();
-      			break;
-    		}
-    		case 2: {
-      			tft->select_screen();
-      			break;
-    		}
-    		case 3: {
-      			tft->real_time_temp();
-      			break;
-    		}
-	}
+	float current_temp = sensor.readTemperature();
+	display.set_current_temp((int)current_temp);
+	display.update();
+	motor.update_delay(current_temp, (float)display.get_target());
+	motor.spin();
 }
