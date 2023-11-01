@@ -25,6 +25,7 @@ Display::Display(int tft_CS, int tft_DC, int current_temp, int select, int down,
 	_up = up;
 
 	_target_temp = current_temp;
+	_atual_temp = current_temp;
 }
 
 void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1[], int size_texto, char txt_2[], char txt_3[]) {
