@@ -100,7 +100,7 @@ void Display::real_time_temp() {
     		_tft.println("");
 
     		_tft.setTextSize(5);
-    		_tft.print("  " + String(_atual_temp));
+    		_tft.print("   " + String(_atual_temp));
     		_tft.setTextSize(2);
     		_tft.print("o");
     		_tft.setTextSize(5);
@@ -118,7 +118,7 @@ void Display::real_time_temp() {
 
 		if (!digitalRead(_up) || !digitalRead(_down)) {
 			retorno = 0;
-			_tft.fillScreen(ILI9341_BLACK);
+			display.fillRect(10, 60, 300, 100, ILI9341_BLACK);
 		}
   	}
 }
