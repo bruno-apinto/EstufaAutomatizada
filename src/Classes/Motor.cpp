@@ -12,14 +12,14 @@ Motor::Motor(int step, int dir, int led): _step(step), _dir(dir), _led(led) {
 	pinMode(_step, OUTPUT);
 	pinMode(_dir, OUTPUT);
 	pinMode(_led, OUTPUT);
+	digitalWrite(_dir, HIGH);
 }
 
 void Motor::spin() {
 	//Se o delay for maior que o mínimo, o motor acionará
 	if (_delay > MIN_DELAY) {
 		digitalWrite(_led, HIGH);
-
-		digitalWrite (_dir, HIGH);
+		
 		digitalWrite(_step, LOW);
 		digitalWrite(_step, HIGH);
 
