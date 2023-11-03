@@ -3,7 +3,6 @@
 #include "DHT.h"
 
 #include "Classes/Motor.hpp"
-#include "Classes/Sensor.hpp"
 #include "Classes/Display.hpp"
 
 //Definição da porta do sensor
