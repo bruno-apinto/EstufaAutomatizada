@@ -2,7 +2,7 @@
 #include <Adafruit_ILI9341.h>
 #include <SPI.h>
 #include <Arduino.h>
-#include "Display.hpp"
+#include "Classes/Display.hpp"
 
 Display::Display(int tft_CS, int tft_DC, int current_temp, int target_temp, int select, int down, int up): _tft(Adafruit_ILI9341(tft_CS, tft_DC)) {
 	
