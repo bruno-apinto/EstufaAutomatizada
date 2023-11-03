@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include <esp32-hal-gpio.h>
-#include "Motor.hpp"
+#include "Classes/Motor.hpp"
 
 #define MIN_DELAY 2000 // Delay minimo
 #define MAX_DELAY 10000 // Delay maximo
