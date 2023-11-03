@@ -15,7 +15,6 @@ Motor::Motor(int step,
 	_step(step),
 	_dir(dir), 
 	_led(led) {
-
 	pinMode(_step, OUTPUT);
 	pinMode(_dir, OUTPUT);
 	pinMode(_led, OUTPUT);
@@ -37,7 +36,6 @@ void Motor::spin() {
 	}
 	
 }
-
 void Motor::update_delay(float current_temp, float target_temp) {
 	float m = (MAX_DELAY - MIN_DELAY)/MAX_TEMP_DIFF; // m = (y1 - y0)/(x1 - x0)
 	_delay = MIN_DELAY + m*(current_temp - target_temp) ; // y = y0 + m(x - x0)

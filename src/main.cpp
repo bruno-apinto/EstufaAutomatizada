@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "DHT.h"
 
 #include "DHT.h"
 
@@ -24,6 +25,10 @@
 Display display(TFT_CS, TFT_DC, 25, SELECT_BUTTON, DOWN_BUTTON, UP_BUTTON);
 Motor motor(MOTOR_STEP, MOTOR_DIR, MOTOR_LED);
 DHT sensor(25, DHT22);
+
+//objeto sensor
+DHT _sensor(DHT(sensor, DHT22));
+float current_temp_ = _sensor.readTemperature();
 
 void setup(){
 	Serial.begin(115200);

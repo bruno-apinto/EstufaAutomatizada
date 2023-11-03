@@ -13,42 +13,48 @@ Display::Display(int tft_CS, int tft_DC, int current_temp, int select, int down,
 	_tft.setRotation(1);
 	_tft.fillScreen(ILI9341_BLACK);
 	
-	_tela = 1;
+	_tela = 1; //main screen
 	
 	pinMode(down, INPUT_PULLUP);
 	pinMode(select, INPUT_PULLUP);
 	pinMode(up, INPUT_PULLUP);
 	
+	//botoes
 	_select = select;
 	_down = down;
 	_up = up;
 
+	//temperaturas
 	_target_temp = current_temp;
 	_current_temp = current_temp;
 }
 
-void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1[], int size_texto, char txt_2[], char txt_3[]) {
+void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1[], 
+									int size_texto, char txt_2[], char txt_3[]) {
+	
+	// parametros da tela inicial
 	_tft.setCursor(0,0);
 	_tft.setTextSize(size_titulo);
 	_tft.println("");
-	_tft.print("");
+	_tft.println("");
 	_tft.println(txt_1);
 	_tft.setTextSize(size_texto);
 	_tft.println("");
 	_tft.println("");
 
-	if (posicao_do_cursor == 2) {
+	if (posicao_do_cursor == 2) { //cursor para select screen
 		_tft.write(16);
 		_tft.print(" ");
 	} else {
 		_tft.print("  ");
 	}
-	_tft.println(txt_2);
-	_tft.println("");
 
-	if (posicao_do_cursor == 3) {
-		_tft.write(16);
-		_tft.print(" ");
+	  	_tft.println(txt_2);
+	  	_tft.println("");
+	
+	if (posicao_do_cursor == 3) { //cursor para real time temp
+	   	_tft.write(16);
+	    	_tft.print(" ");
 	} else {
 		_tft.print("  ");
 	}
@@ -58,7 +64,6 @@ void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1
 void Display::main_screen() {
 	int retorno = 1;
 	int posicao_do_cursor = 2;
-
 	if (posicao_do_cursor == 2) {
 		design_display (posicao_do_cursor, 3, "Estufa Automatica", 2, "Definir temp. ideal", "Temp. em tempo real");
 	}
@@ -80,6 +85,7 @@ void Display::main_screen() {
 	if (!digitalRead(_select)) {
 		_tela = posicao_do_cursor;
 		_tft.fillScreen(ILI9341_BLACK);
+
 	}
 }
 
