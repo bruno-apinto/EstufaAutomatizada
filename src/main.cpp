@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "DHT.h"
 
 #include "Classes/Motor.hpp"
 #include "Classes/Sensor.hpp"
@@ -9,7 +10,12 @@
 #define MOTOR_DIR 25
 #define MOTOR_LED 12
 
+//ponteiro pra Display
 Display *tft;
+
+//objeto sensor
+DHT _sensor;
+float current_temp_;
 
 void setup(){
 	Serial.begin(115200);
@@ -19,7 +25,7 @@ void setup(){
 	pinMode(MOTOR_LED, OUTPUT);
 	
 	//Construção de um instância da classe Display
-	tft = new Display(5, 32, 25, 2, 4, 15);
+	tft = new Display(5, 32, current_temp_, 2, 4, 15);
 		// 4 -botao baixo
 		// 2 - selecionar
 		// 15 - botao cima

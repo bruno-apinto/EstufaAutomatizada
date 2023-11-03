@@ -33,7 +33,7 @@ Display::Display(int tft_CS, int tft_DC, int current_temp, int select, int down,
 void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1[], 
 									int size_texto, char txt_2[], char txt_3[]) {
 	
-	// parametrosda tela inicial
+	// parametros da tela inicial
 	_tft.setCursor(0,0);
 	_tft.setTextSize(size_titulo);
 	_tft.println("");
@@ -146,10 +146,12 @@ void Display::select_screen() {
 	int retorno = 1;
 	
   	while (retorno) {
+
+			//imagem do display
     		_tft.setCursor(0,0);
     		_tft.setTextSize(3);
     		_tft.println("");
-   		_tft.print("  Temperatura");
+   			_tft.print("  Temperatura");
     		_tft.setTextSize(4);
     		_tft.println(": ");
     		_tft.println("");
@@ -157,8 +159,8 @@ void Display::select_screen() {
     		_tft.setTextSize(5);
     		_tft.print("   " + String(_target_temp));
     		_tft.setTextSize(2);
-   		_tft.print(" o");
-   		_tft.setTextSize(5);
+   			_tft.print(" o");
+   			_tft.setTextSize(5);
     		_tft.println("C");
     		_tft.println("");
     		_tft.setTextSize(2);
@@ -166,17 +168,17 @@ void Display::select_screen() {
     		_tft.println(" Voltar");
 
     		_tft.setCursor(65,86);
-   		_tft.write(24);
+   			_tft.write(24);
     		_tft.setCursor(65,109);
     		_tft.write(25);
 
     		if (!digitalRead(_up)) {
-      			_target_temp ++;
+      			_target_temp++;
       			_tft.fillRect(90, 60, 150, 100, ILI9341_BLACK);
     		}
 
     		if (!digitalRead(_down)) {
-      			_target_temp --;
+      			_target_temp--;
       			_tft.fillRect(90, 60, 150, 100, ILI9341_BLACK);
     		}
 
@@ -187,8 +189,6 @@ void Display::select_screen() {
     		}
   	}
 }
-
-
 
 int Display::get_tela() {
 	return _tela;
