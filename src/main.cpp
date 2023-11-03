@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <DHT.h>
-#include "Motor.hpp"
-#include "Display.hpp"
+#include "Classes/Motor.hpp"
+#include "Classes/Display.hpp"
 
 //Definição da porta do sensor
 #define SENSOR 25
