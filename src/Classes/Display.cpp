@@ -14,31 +14,36 @@ Display::Display(int tft_CS, int tft_DC, int current_temp, int select, int down,
 	_tft.setRotation(1);
 	_tft.fillScreen(ILI9341_BLACK);
 	
-	_tela = 1;
+	_tela = 1; //main screen
 	
 	pinMode(down, INPUT_PULLUP);
 	pinMode(select, INPUT_PULLUP);
 	pinMode(up, INPUT_PULLUP);
 	
+	//botoes
 	_select = select;
 	_down = down;
 	_up = up;
 
+	//temperaturas
 	_target_temp = current_temp;
 	_atual_temp = current_temp;
 }
 
-void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1[], int size_texto, char txt_2[], char txt_3[]) {
+void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1[], 
+									int size_texto, char txt_2[], char txt_3[]) {
+	
+	// parametrosda tela inicial
 	_tft.setCursor(0,0);
 	_tft.setTextSize(size_titulo);
 	_tft.println("");
-	_tft.print("");
+	_tft.println("");
 	_tft.println(txt_1);
 	_tft.setTextSize(size_texto);
 	_tft.println("");
 	_tft.println("");
 	
-	if (posicao_do_cursor == 2) {
+	if (posicao_do_cursor == 2) { //cursor para select screen
 		_tft.write(16);
 		_tft.print(" ");
 	} else {
@@ -47,7 +52,7 @@ void Display::design_display (int posicao_do_cursor, int size_titulo, char txt_1
 	  	_tft.println(txt_2);
 	  	_tft.println("");
 	
-	if (posicao_do_cursor == 3) {
+	if (posicao_do_cursor == 3) { //cursor para real time temp
 	   	_tft.write(16);
 	    	_tft.print(" ");
 	} else {
@@ -61,30 +66,43 @@ void Display::main_screen() {
 	int posicao_do_cursor = 2;
 	
 	while (retorno) {
+
+		//posicoes do cursor 
 		if (posicao_do_cursor == 2) {
-	      		design_display (posicao_do_cursor, 3, "Estufa Automatizada", 2, "Definir temp. ideal", "Temp. em tempo real");
-	    	}
+	      		design_display (2, 3, "Estufa Automatica", 
+									2, "Definir temp. ideal", "Temp. em tempo real");
+	    }
 	
-		if (posicao_do_cursor == 3) {
-	     	 	design_display (posicao_do_cursor, 3, "Estufa Automatizada", 2, "Definir temp. ideal", "Temp. em tempo real");
-	    	}
+		else if (posicao_do_cursor == 3) {
+	     	 	design_display (3, 3, "Estufa Automatica",
+									 2, "Definir temp. ideal", "Temp. em tempo real");
+	    }
 	
-	    	if (!digitalRead(_up) && posicao_do_cursor != 2) {
-	      		posicao_do_cursor --;
+		//apertando botoes
+	    if (!digitalRead(_up) && posicao_do_cursor != 2) {
+	      		posicao_do_cursor--;
 	      		_tft.fillRect(0, 45, 12, 130, ILI9341_BLACK);
-	    	}
+	    }
 	
-	    	if (!digitalRead(_down) && posicao_do_cursor != 3) {
-	      		posicao_do_cursor ++;
+	    else if (!digitalRead(_down) && posicao_do_cursor != 3) {
+	      		posicao_do_cursor++;
 	      		_tft.fillRect(0, 45, 12, 130, ILI9341_BLACK);
-	    	}
+	    }
+
+		 else if (!digitalRead(_up) && posicao_do_cursor == 2) {
+	      		_tft.fillRect(0, 45, 12, 130, ILI9341_BLACK);
+	    }
+
+		 else if (!digitalRead(_down) && posicao_do_cursor == 3) {
+	      		_tft.fillRect(0, 45, 12, 130, ILI9341_BLACK);
+	    }
 	
-	    	if (!digitalRead(_select)) {
+	    if (!digitalRead(_select)) {
 	      		retorno = 0;
 	      		_tela = posicao_do_cursor;
 				_tft.fillScreen(ILI9341_BLACK);
 	      		
-	    	}
+	    }
 	}
 }
 
@@ -170,9 +188,7 @@ void Display::select_screen() {
   	}
 }
 
-void Display::update() {
-	
-}
+
 
 int Display::get_tela() {
 	return _tela;

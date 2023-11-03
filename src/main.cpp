@@ -20,6 +20,9 @@ void setup(){
 	
 	//Construção de um instância da classe Display
 	tft = new Display(5, 32, 25, 2, 4, 15);
+		// 4 -botao baixo
+		// 2 - selecionar
+		// 15 - botao cima
 }
 
 void loop(){

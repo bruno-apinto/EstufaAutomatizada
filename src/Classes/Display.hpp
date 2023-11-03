@@ -33,9 +33,13 @@ public:
 	int get_atual_temp();
 
 private:
-	Adafruit_ILI9341 _tft; // controlador do display
+	/**
+	 * @brief Controlador do Display
+	 * 
+	 */
+	Adafruit_ILI9341 _tft;
 
-	int _target_temp; // temperatura alvo
+	int _target_temp; //temperatura alvo
 	int _atual_temp; // temperatura atual
 	int _tela; // tela atual
 
