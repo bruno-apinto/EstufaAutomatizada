@@ -10,7 +10,7 @@ public:
 	void spin();
 
 	/// @brief Atualiza o delay de acordo com as temperaturas atual e alvo,
-  ///        sendo delay sempre maior que 2ms
+  	///        sendo delay sempre maior que 2ms
 	/// @param current_temp Temperatura atual
 	/// @param target_temp Temperatura alvo
 	void update_delay(float current_temp, float target_temp);
