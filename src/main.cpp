@@ -14,8 +14,8 @@
 Display *tft;
 
 //objeto sensor
-DHT _sensor;
-float current_temp_;
+DHT _sensor(DHT(sensor, DHT22));
+float current_temp_ = _sensor.readTemperature();
 
 void setup(){
 	Serial.begin(115200);
