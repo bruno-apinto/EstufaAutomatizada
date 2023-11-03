@@ -14,9 +14,9 @@ Display *tft;
 void setup(){
 	Serial.begin(115200);
 
-	pinMode(DIR, OUTPUT);
-  	pinMode(STEP, OUTPUT);
-	pinMode(LED, OUTPUT);
+	pinMode(MOTOR_DIR, OUTPUT);
+  	pinMode(MOTOR_STEP, OUTPUT);
+	pinMode(MOTOR_LED, OUTPUT);
 	
 	//Construção de um instância da classe Display
 	tft = new Display(5, 32, 25, 2, 4, 15);

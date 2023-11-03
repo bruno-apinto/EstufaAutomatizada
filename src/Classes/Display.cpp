@@ -62,11 +62,11 @@ void Display::main_screen() {
 	
 	while (retorno) {
 		if (posicao_do_cursor == 2) {
-	      		design_display (posicao_do_cursor, 3, "Estufa Automatica", 2, "Definir temp. ideal", "Temp. em tempo real");
+	      		design_display (posicao_do_cursor, 3, "Estufa Automatizada", 2, "Definir temp. ideal", "Temp. em tempo real");
 	    	}
 	
 		if (posicao_do_cursor == 3) {
-	     	 	design_display (posicao_do_cursor, 3, "Estufa Automatica", 2, "Definir temp. ideal", "Temp. em tempo real");
+	     	 	design_display (posicao_do_cursor, 3, "Estufa Automatizada", 2, "Definir temp. ideal", "Temp. em tempo real");
 	    	}
 	
 	    	if (!digitalRead(_up) && posicao_do_cursor != 2) {
@@ -82,7 +82,8 @@ void Display::main_screen() {
 	    	if (!digitalRead(_select)) {
 	      		retorno = 0;
 	      		_tela = posicao_do_cursor;
-	      		_tft.fillScreen(ILI9341_BLACK);
+				_tft.fillScreen(ILI9341_BLACK);
+	      		
 	    	}
 	}
 }
