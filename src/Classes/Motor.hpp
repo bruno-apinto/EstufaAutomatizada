@@ -29,7 +29,7 @@ private:
 	int _step; //quantidade de passos
 	int _dir; //sentido de giro 0 = AH, 1 = H
 	int _led; 
-	float _delay; //delay entre os passos
+	float _delay = 5000; //delay entre os passos
 };
 
 #endif //MOTOR_HPP

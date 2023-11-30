@@ -1,7 +1,5 @@
 #include <Arduino.h>
-#include "DHT.h"
-
-#include "DHT.h"
+#include <DHT.h>
 
 #include "Classes/Motor.hpp"
 #include "Classes/Display.hpp"
@@ -22,13 +20,9 @@
 #define UP_BUTTON 15
 #define DOWN_BUTTON 4
 
-Display display(TFT_CS, TFT_DC, 25, SELECT_BUTTON, DOWN_BUTTON, UP_BUTTON);
 Motor motor(MOTOR_STEP, MOTOR_DIR, MOTOR_LED);
-DHT sensor(25, DHT22);
-
-//objeto sensor
-DHT _sensor(DHT(sensor, DHT22));
-float current_temp_ = _sensor.readTemperature();
+DHT sensor(SENSOR, DHT22);
+Display display(TFT_CS, TFT_DC, sensor.readTemperature(), 25, SELECT_BUTTON, DOWN_BUTTON, UP_BUTTON);
 
 void setup(){
 	Serial.begin(115200);
@@ -36,8 +30,12 @@ void setup(){
 
 void loop(){
 	float current_temp = sensor.readTemperature();
+	display.set_previous_temp((int)current_temp);
+	delay(500);
+	current_temp = sensor.readTemperature();
 	display.set_current_temp((int)current_temp);
-	display.update();
-	motor.update_delay(current_temp, (float)display.get_target());
+	// motor.update_delay(current_temp, (float)display.get_target());
 	motor.spin();
+	display.update();
 }
+

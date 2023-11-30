@@ -1,7 +1,6 @@
 #include "Arduino.h"
 
 #include "Motor.hpp"
-#include "esp32-hal-gpio.h"
 
 #define MIN_DELAY 2000 // Delay minimo
 #define MAX_DELAY 10000 // Delay maximo
@@ -36,7 +35,7 @@ void Motor::spin() {
 	}
 	
 }
-void Motor::update_delay(float current_temp, float target_temp) {
-	float m = (MAX_DELAY - MIN_DELAY)/MAX_TEMP_DIFF; // m = (y1 - y0)/(x1 - x0)
-	_delay = MIN_DELAY + m*(current_temp - target_temp) ; // y = y0 + m(x - x0)
-}
+// void Motor::update_delay(float current_temp, float target_temp) {
+// 	float m = (MAX_DELAY - MIN_DELAY)/MAX_TEMP_DIFF; // m = (y1 - y0)/(x1 - x0)
+// 	_delay = MIN_DELAY + m*(current_temp - target_temp) ; // y = y0 + m(x - x0)
+// }
